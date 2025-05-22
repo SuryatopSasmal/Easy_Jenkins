@@ -13,5 +13,41 @@
     - In the pipeline script area, add this basic script:</br>
 <img src ="https://github.com/user-attachments/assets/e861470f-aea9-4825-a004-262f0cbcc4da">
 
+<pre>
+groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                sh 'sleep 5'// Simulate build time
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh 'sleep 3'// Simulate test time
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                sh 'sleep 2'// Simulate deployment
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline execution failed!'
+        }
+    }
+}
+</pre>
+​
 
 
